@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      {% for post in object_list %}
+      <div class="card mt-5">
+        <div class="card-body">
+          <a href="{% url 'detail_post' post.id %}">
+            <h2 class="card-title">{{ post.title }}</h2>
+          </a>
+          <p class="card-text">{{ post.content|slice:":300" }}...</p>
+          <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date_time|date:'M d, Y' }}</small></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+{% endblock %}

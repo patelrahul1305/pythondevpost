@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-8">
+      <h2>{{ object.title }}</h2>
+      <p class="card-text text-muted"><img src="{{ object.author.profile.profile_picture.url }}" class="rounded-circle" height="35px"> {{ post.author }} | {{ post.date_time|date:'M d, Y' }}
+        {% if object.author == user %}
+        <a class="ps-3" href="{% url 'update_post' object.id %}"><i class="fas fa-edit"></i></a>
+        <a class="ps-3" href="{% url 'delete_post' object.id %}"><i class="fas fa-trash"></i></a>
+        {% endif %}
+      </p>
+      <hr>
+      <p class="">{{ object.content }}
+      <p>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+{% endblock %}
